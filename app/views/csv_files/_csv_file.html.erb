@@ -1,0 +1,32 @@
+<div id="<%= dom_id csv_file %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Fields to sanitize:</strong>
+    <%= csv_file.fields_to_sanitize %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Tags to keep:</strong>
+    <%= csv_file.tags_to_keep %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Copy source fields:</strong>
+    <%= csv_file.copy_source_fields %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Copy destination fields:</strong>
+    <%= csv_file.copy_destination_fields %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Original file:</strong>
+    <%= link_to csv_file.original_file.filename, csv_file.original_file if csv_file.original_file.attached? %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this csv file", csv_file, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this csv file', edit_csv_file_path(csv_file), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

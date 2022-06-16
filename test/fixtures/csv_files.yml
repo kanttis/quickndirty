@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fields_to_sanitize: MyString
+  tags_to_keep: MyString
+  copy_source_fields: MyString
+  copy_destination_fields: MyString
+
+two:
+  fields_to_sanitize: MyString
+  tags_to_keep: MyString
+  copy_source_fields: MyString
+  copy_destination_fields: MyString
