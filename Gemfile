@@ -74,4 +74,4 @@ group :test do
   gem "webdrivers"
 end
 
-gem "sanitize", "~> 6.0"
+gem 'sanitize', git: 'https://github.com/rgrove/sanitize.git', tag: 'v6.0.0'

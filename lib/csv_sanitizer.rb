@@ -20,7 +20,12 @@ module CsvSanitizer
         CSV::Table.new(
             tbl.map do |row|
                 fields.split(",").each do |field|
-                    row[field] = Sanitize.fragment(row[field], elements: tags_to_keep.split(","))
+                    t = Sanitize.fragment(row[field], Sanitize::Config.merge(
+                            Sanitize::Config::BASIC,
+                                :elements => tags_to_keep.split(","),
+                                :attributes => Sanitize::Config::BASIC[:attributes].merge({"iframe" => ['allowfullscreen', 'frameborder', 'height', 'src', 'width'] })))
+                    t = t.gsub("&nbsp;", " ")
+                    row[field] = t.gsub("&amp;", "&")
                 end
                 row
             end
