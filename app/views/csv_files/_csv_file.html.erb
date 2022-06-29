@@ -20,6 +20,11 @@
   </p>
 
   <p class="my-5">
+    <strong class="block font-medium mb-1">Delimeter:</strong>
+    <%= csv_file.delimeter %>
+  </p>
+
+  <p class="my-5">
     <strong class="block font-medium mb-1">Original file:</strong>
     <%= link_to csv_file.original_file.filename, csv_file.original_file if csv_file.original_file.attached? %>
   </p>

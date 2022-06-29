@@ -6,7 +6,7 @@ class CsvFilesController < ApplicationController
   def modified_csv
     begin
       temp_file = Tempfile.new(["modified_csv", ".csv"])
-      tbl = CsvSanitizer.import_csv ActiveStorage::Blob.service.send(:path_for, @csv_file.original_file.key)
+      tbl = CsvSanitizer.import_csv ActiveStorage::Blob.service.send(:path_for, @csv_file.original_file.key), @csv_file.delimeter
       tbl = CsvSanitizer.sanitize_table_rows(tbl, @csv_file.fields_to_sanitize, @csv_file.tags_to_keep)
       tbl = CsvSanitizer.copy_field_content(tbl, @csv_file.copy_source_fields, @csv_file.copy_destination_fields)
       CsvSanitizer.export_csv(tbl, temp_file.path)
@@ -80,6 +80,6 @@ class CsvFilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def csv_file_params
-      params.require(:csv_file).permit(:fields_to_sanitize, :tags_to_keep, :copy_source_fields, :copy_destination_fields, :original_file)
+      params.require(:csv_file).permit(:fields_to_sanitize, :tags_to_keep, :copy_source_fields, :copy_destination_fields, :original_file, :delimeter)
     end
 end

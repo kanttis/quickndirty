@@ -3,8 +3,8 @@ require('sanitize')
 
 module CsvSanitizer
 
-    def self.import_csv(path)
-        CSV.parse(File.read(path), headers: true)
+    def self.import_csv(path, delimeter)
+        CSV.parse(File.read(path), headers: true, col_sep: delimeter)
     end
 
     def self.export_csv(tbl, path)
